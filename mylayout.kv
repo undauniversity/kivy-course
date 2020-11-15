@@ -1,0 +1,33 @@
+MylayoutForm:
+
+<MylayoutForm@BoxLayout>:
+    orientation: 'vertical'
+    txtInput_ : txtInput
+    txtPassword_ : txtPassword
+    btnLogin_ : btnLogin
+    scr_mngr_ : scr_mngr
+
+    ScreenManager:
+        id: scr_mngr
+        Screen:
+            name: 'screenLogin'
+                            
+            BoxLayout:
+                height: "40dp"
+                size_hint_y:None
+
+                TextInput:
+                    id: txtInput
+                    size_hint_x: 50
+                    text: "Username"
+                TextInput:
+                    id: txtPassword           
+                    text: "Password"
+                    size_hint_x: 50   
+                Button:
+                    id: btnLogin 
+                    text: "Login"
+                    size_hint_x: 25
+                    on_press: root.doLogin()   
+        Screen:
+            name: 'screenSignup'                         
