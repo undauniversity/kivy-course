@@ -11,21 +11,31 @@ import urllib.request, json
 
 
 def cekLogin(username, password):
-    with urllib.request.urlopen("http://localhost/lat/api2.php?auth=888") as json_url:
-        data = json.loads(json_url.read().decode())
+    with urllib.request.urlopen("http://localhost/lat/api.php?auth=888&perintah=loginMhs&user="+username+"&pass="+password) as json_url:
+        data = json.loads(json_url.read())
         #print(data)
-        print(json.dumps(data, indent=3, sort_keys=True))
-        print("isi data=" +username +", " +password)
+        #print(json.dumps(data, indent=3, sort_keys=True))
+        #print("isi data=" +username +", " +password)
+        usernameTabel = data[0]["npm"]
+        passwordTabel = data[0]["password"]
+
+        if username==usernameTabel and password==passwordTabel:
+            print("Login Berhasil")
+            data=1
+        else:
+            print("login gagal")
+            data=0
+
     return data
 
 
 class MylayoutForm(MDBoxLayout):
     def doLogin(self):
         #print("Explicit is better than implicit.")
-        self.txtPassword_.text="halo"
+        #self.txtPassword_.text="halo"
         cekLogin(self.txtUsername_.text,self.txtPassword_.text) #cek isi dari txtUsername_ dan txtPassword_
 
-#penamaan class harus sama dengan file kv
+# penamaan class harus sama dengan file kv
 # mylayout.kv
 # nama class WAJIB MylayoutApp
 class MylayoutApp(MDApp):
