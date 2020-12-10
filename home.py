@@ -12,6 +12,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 
+
+
 def cekLogin(username, password):
     with urllib.request.urlopen("http://localhost/lat/api.php?auth=888&perintah=loginMhs&user="+username+"&pass="+password) as json_url:
         data = json.loads(json_url.read())
@@ -30,7 +32,9 @@ def cekLogin(username, password):
     return data
 
 class LoginScreen(Screen):
-    pass
+    def doLogin(self):
+        #print("Halooo")
+        cekLogin(self.txtUsername_.text,self.txtPassword_.text)
 
 
 class HomeScreen(Screen):
@@ -47,14 +51,15 @@ class MylayoutForm(MDBoxLayout):
         #self.txtPassword_.text="halo"
         cekLogin(self.txtUsername_.text,self.txtPassword_.text) #cek isi dari txtUsername_ dan txtPassword_
 '''
-
+'''
 class LoginScreen(MDBoxLayout):
    def doLogin(self):
         print("Halooo")
+'''
 
 # penamaan class harus sama dengan file kv
-# mylayout.kv
-# nama class WAJIB MylayoutApp
+# sim.kv
+# nama class WAJIB SimApp
 class SimApp(MDApp):
     pass
 if __name__ == '__main__':
