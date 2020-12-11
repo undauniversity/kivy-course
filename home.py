@@ -20,42 +20,38 @@ def cekLogin(username, password):
         usernameTabel = data[0]["npm"]
         passwordTabel = data[0]["password"]
 
-
         #root.manager.current = 'Beranda'
         if username==usernameTabel and password==passwordTabel:
-            print("Login Berhasil")
+            #print("Login Berhasil")
             data=1
         else:
-            print("login gagal")
+            #print("login gagal")
             data=0
 
     return data
 
+def SaveSignUp(username, password):
+    print("simpan " +username)
+    print("simpan " +password)
+    return 0
+
+
 class LoginScreen(Screen):
     def doLogin(self):
         #print("Halooo")
-        cekLogin(self.txtUsername_.text,self.txtPassword_.text)
+        if cekLogin(self.txtUsername_.text,self.txtPassword_.text) == 1:
+            print("masuk ke menu")
+            self.manager.current = 'Beranda'
 
 
 class HomeScreen(Screen):
-    pass
+   pass
+        
 
 
 class SignupScreen(Screen):
-    pass
-
-'''
-class MylayoutForm(MDBoxLayout):
-    def doLogin(self):
-        #print("Explicit is better than implicit.")
-        #self.txtPassword_.text="halo"
-        cekLogin(self.txtUsername_.text,self.txtPassword_.text) #cek isi dari txtUsername_ dan txtPassword_
-'''
-'''
-class LoginScreen(MDBoxLayout):
-   def doLogin(self):
-        print("Halooo")
-'''
+     def doSaveSignUp(self):
+        SaveSignUp(self.txtUsername_SU.text, self.txtPassword_SU.text)
 
 # penamaan class harus sama dengan file kv
 # sim.kv
